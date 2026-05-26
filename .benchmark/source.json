@@ -1,0 +1,7 @@
+{
+  "source": "https://github.com/traefik/traefik",
+  "workflow_path": ".github/workflows/codeql.yml",
+  "source_commit_sha": "eec68dce064f843b4317c4393aaea81b6dea31d6",
+  "source_successful_run_url": "https://github.com/traefik/traefik/actions/runs/26422349311",
+  "imported_at": "2026-05-26T08:01:56.854179+00:00"
+}
