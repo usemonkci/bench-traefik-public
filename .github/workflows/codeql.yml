@@ -3,15 +3,16 @@ name: "CodeQL"
 on:
   push:
     branches:
-      - master
-      - v*
+    - master
+    - v*
   schedule:
-    - cron: '11 22 * * 1'
+  - cron: '11 22 * * 1'
 
+  workflow_dispatch:
 jobs:
   analyze:
     name: Analyze
-    runs-on: ubuntu-latest
+    runs-on: monkci-ubuntu-24.04-2
     timeout-minutes: 30
     permissions:
       actions: read
@@ -21,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript', 'go' ]
+        language: ['javascript', 'go']
         # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
         # Use only 'java' to analyze code written in Java, Kotlin or both
         # Use only 'javascript' to analyze code written in JavaScript, TypeScript or both
@@ -54,7 +55,8 @@ jobs:
     # Autobuild attempts to build any compiled languages (C/C++, C#, Go, Java, or Swift).
     # If this step fails, then you should remove it and run the build manually (see below)
     - name: Autobuild
-      uses: github/codeql-action/autobuild@38e701f46e33fb233075bf4238cb1e5d68e429e4 # v3.31.11
+      uses: 
+        github/codeql-action/autobuild@38e701f46e33fb233075bf4238cb1e5d68e429e4     # v3.31.11
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
@@ -67,6 +69,7 @@ jobs:
     #     ./location_of_script_within_repo/buildscript.sh
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@38e701f46e33fb233075bf4238cb1e5d68e429e4 # v3.31.11
+      uses: 
+        github/codeql-action/analyze@38e701f46e33fb233075bf4238cb1e5d68e429e4     # v3.31.11
       with:
         category: "/language:${{matrix.language}}"
